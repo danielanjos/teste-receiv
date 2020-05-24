@@ -10,7 +10,7 @@ CREATE TABLE colaboradores(
     fl_administrador BIT  NOT NULL
 );
 
-INSERT INTO colaboradores (nome, login, email, senha, fl_administrador) VALUES ('Administrador', 'admin', 'admin@email.com', '$argon2i$v=19$m=65536,t=4,p=1$RDFuOGhodWF0aFRNdXpDZw$REENC4O/tkuwvo9R4gYALmUqJSiYEJHQZffK/yz9pOM', 1);
+INSERT INTO colaboradores (nome, login, email, senha, fl_administrador) VALUES ('Administrador', 'admin', 'admin@email.com', '$argon2id$v=19$m=65536,t=4,p=1$RDJLMy9Ld2xaSmRGY2NZWA$BCWvz71kGfGI3E1d1XoFbhMD8udOeJfcjs3oo2OiJNI', 1);
 
 CREATE TABLE tipos_pessoa(
 	id INT PRIMARY KEY,
@@ -28,45 +28,49 @@ CREATE TABLE clientes(
     CONSTRAINT fk_clientes_tipo_pessoa FOREIGN KEY (id_tipo_pessoa) REFERENCES tipos_pessoa(id)
 );
 
-CREATE TABLE tipos_enderecos(
+CREATE TABLE tipos_endereco(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     descricao VARCHAR(30) NOT NULL
 );
 
-INSERT INTO tipos_enderecos (id, descricao) VALUES (1, 'Residencial'), (2, 'Comercial'), (3, 'Outro');
+INSERT INTO tipos_endereco (id, descricao) VALUES (1, 'Residencial'), (2, 'Comercial'), (3, 'Outro');
 
 CREATE TABLE enderecos(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     id_tipo_endereco INT NOT NULL,
+    cep VARCHAR(8) NOT NULL,
     descricao VARCHAR(255) NOT NULL,
+    bairro VARCHAR(30) NOT NULL,
+    cidade VARCHAR(40) NOT NULL, 
+    estado VARCHAR(2) NOT NULL,
     numero INT NOT NULL,
     id_cliente INT NOT NULL,
     fl_principal BIT NOT NULL,
-    CONSTRAINT fk_endereco_tipo FOREIGN KEY (id_tipo_endereco) REFERENCES tipos_enderecos(id),
+    CONSTRAINT fk_endereco_tipo FOREIGN KEY (id_tipo_endereco) REFERENCES tipos_endereco(id),
     CONSTRAINT fk_endereco_cliente FOREIGN KEY (id_cliente) REFERENCES clientes(id)
 );
 
 
-CREATE TABLE tipos_titulos(
+CREATE TABLE tipos_titulo(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     descricao VARCHAR(255) NOT NULL
 );
 
-INSERT INTO tipos_titulos (id, descricao) VALUES (1, 'Prefixado'), (2, 'Pós-fixado'), (3, 'Híbrido');
+INSERT INTO tipos_titulo (id, descricao) VALUES (1, 'Prefixado'), (2, 'Pós-fixado'), (3, 'Híbrido');
 
-CREATE TABLE moedas(
+CREATE TABLE moeda(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     codigo VARCHAR(10) NOT NULL
 );
 
-INSERT INTO moedas VALUES (1, 'BRL');
+INSERT INTO moeda VALUES (1, 'BRL');
 
-CREATE TABLE status_titulos(
+CREATE TABLE status_titulo(
 	id INT PRIMARY KEY,
     descricao VARCHAR(50)
 );
 
-INSERT INTO status_titulos (id, descricao) VALUES (1, 'Quitado'), (2, 'Vigente');
+INSERT INTO status_titulo (id, descricao) VALUES (1, 'Quitado'), (2, 'Vigente');
 
 CREATE TABLE titulos(
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -80,12 +84,10 @@ CREATE TABLE titulos(
     dt_quitacao DATETIME,
     valor_pago DOUBLE(10,2) DEFAULT 0,
     saldo_devedor DOUBLE(10,2) NOT NULL,
-    updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ultimaAtualizacao DATETIME DEFAULT CURRENT_TIMESTAMP,
     id_moeda INT NOT NULL,
-    CONSTRAINT fk_titulo_tipo FOREIGN KEY (id_tipo_titulo) REFERENCES tipos_titulos(id),
+    CONSTRAINT fk_titulo_tipo FOREIGN KEY (id_tipo_titulo) REFERENCES tipos_titulo(id),
     CONSTRAINT fk_titulo_cliente FOREIGN KEY (id_cliente) REFERENCES clientes(id),
-    CONSTRAINT fk_titulo_moeda FOREIGN KEY (id_moeda) REFERENCES moedas(id),
-    CONSTRAINT fk_titulo_status FOREIGN KEY (id_status) REFERENCES status_titulos(id)
+    CONSTRAINT fk_titulo_moeda FOREIGN KEY (id_moeda) REFERENCES moeda(id),
+    CONSTRAINT fk_titulo_status FOREIGN KEY (id_status) REFERENCES status_titulo(id)
 );
-
-#drop database newDatabase;

@@ -8,9 +8,7 @@
 .container section.form{
   width: 100%;
   max-width: 350px;
-  margin-right: 30px;
   background-color: rgba(255, 75, 20, 0.06);
-  /* opacity: 0.5; */
   border:1px solid #84290d;
   border-radius: 10px;
   padding: 20px;
