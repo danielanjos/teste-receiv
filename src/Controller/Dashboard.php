@@ -3,20 +3,20 @@
 namespace Receiv\Controller;
 
 use Receiv\Helper\RenderizaHtmlTrait;
-use Receiv\Infra\Persistencia\CriaConexao;
 
-class Home implements InterfaceControlaRotas
+class Dashboard implements InterfaceControlaRotas
 {
 
   use RenderizaHtmlTrait;
 
   public function ProcessaRequisicao(): void
   {
-
-    $html = $this->renderizaHtml("home/home.php", [
-      "titulo" => "Home"
+    
+    $html = $this->renderizaHtml("/dashboard/dashboard.php", [
+      "titulo" => "Dashboard"
     ]);
 
     echo $html;
+
   }
 }

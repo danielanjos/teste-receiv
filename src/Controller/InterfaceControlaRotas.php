@@ -4,5 +4,5 @@ namespace Receiv\Controller;
 
 interface InterfaceControlaRotas
 {
-  public function processaRequisicao() : void;
+  public function ProcessaRequisicao() : void;
 }

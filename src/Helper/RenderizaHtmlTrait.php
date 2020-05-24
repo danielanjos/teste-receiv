@@ -2,7 +2,7 @@
 
 namespace Receiv\Helper;
 
-trait RenderizaHtml
+trait RenderizaHtmlTrait
 {
   public function renderizaHtml(string $caminhoTemplate, array $dados) : string
   {

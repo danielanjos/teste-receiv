@@ -10,7 +10,7 @@ CREATE TABLE colaboradores(
     fl_administrador BIT  NOT NULL
 );
 
-INSERT INTO colaboradores (nome, login, email, senha, fl_administrador) VALUES ('Administrador', 'admin', 'admin@email.com', '123', 1);
+INSERT INTO colaboradores (nome, login, email, senha, fl_administrador) VALUES ('Administrador', 'admin', 'admin@email.com', '$argon2i$v=19$m=65536,t=4,p=1$RDFuOGhodWF0aFRNdXpDZw$REENC4O/tkuwvo9R4gYALmUqJSiYEJHQZffK/yz9pOM', 1);
 
 CREATE TABLE tipos_pessoa(
 	id INT PRIMARY KEY,
