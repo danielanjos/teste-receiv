@@ -4,7 +4,7 @@ namespace Receiv\Controller;
 
 use Receiv\Helper\FlashMessageTrait;
 use Receiv\Infra\Persistence\CriaConexao;
-use Receiv\Infra\Repository\AutenticacaoRepository;
+use Receiv\Infra\Repository\PDOAutenticacaoRepository;
 
 class Autenticacao implements InterfaceControlaRotas
 {
@@ -19,7 +19,7 @@ class Autenticacao implements InterfaceControlaRotas
 
     try{
       $conexao = CriaConexao::criaConexao();
-      $autenticacao = new AutenticacaoRepository($conexao);
+      $autenticacao = new PDOAutenticacaoRepository($conexao);
       $colaborador = $autenticacao->Autentica($login, $senha);
       $_SESSION["usuario_logado"] = $colaborador;
       header("Location: /dashboard");

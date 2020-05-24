@@ -4,17 +4,24 @@ namespace Receiv\Entity;
 
 use DateTimeImmutable;
 
-class Clientes
+class Cliente
 {
   private ?int $id;
   public TiposPessoa $tiposPessoa;
   private string $cpf_cnpj;
   private string $nome;
   private DateTimeImmutable $dtNascimento;
+  /** @var Enderecos[] */
+  private array $enderecos = [];
 
-  public function __construct(?int $id, int $idTipoPessoa, string $descricaoTipoPessoa, 
-    string $cpf_cnpj, string $nome, DateTimeImmutable $dtNascimento)
-  {
+  public function __construct(
+    ?int $id,
+    int $idTipoPessoa,
+    string $descricaoTipoPessoa,
+    string $cpf_cnpj,
+    string $nome,
+    DateTimeImmutable $dtNascimento
+  ) {
     $this->id = $id;
     $this->tiposPessoa = new TiposPessoa($idTipoPessoa, $descricaoTipoPessoa);
     $this->cpf_cnpj = $cpf_cnpj;
@@ -28,6 +35,15 @@ class Clientes
   public function getId()
   {
     return $this->id;
+  }
+
+  public function setId(int $id): void
+  {
+    if (!is_null($this->id)) {
+      throw new \DomainException("Já existe um ID para esse Cliente");
+    }
+
+    $this->id = $id;
   }
 
   /**
@@ -64,4 +80,16 @@ class Clientes
   {
     return $this->dtNascimento;
   }
+
+  public function addEndereco(Enderecos $endereco): void
+  {
+    $this->enderecos[] = $endereco;
+  }
+
+  /** @return Enderecos[] */
+  public function getEnderecos() : array
+  {
+      return $this->enderecos;
+  }
+
 }

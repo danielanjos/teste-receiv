@@ -5,7 +5,7 @@ namespace Receiv\Infra\Repository;
 use Exception;
 use Receiv\Entity\Colaborador;
 
-class AutenticacaoRepository  
+class PDOAutenticacaoRepository  
 {
 
   private \PDO $conexao;

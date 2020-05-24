@@ -1,6 +1,6 @@
 <?php
 
-namespace Receiv\Controller;
+namespace Receiv\Entity;
 
 class Enderecos
 {
@@ -99,5 +99,14 @@ class Enderecos
   public function getFlPrincipal()
   {
     return $this->flPrincipal;
+  }
+
+  public function setId(int $id): void
+  {
+    if (!is_null($this->id)) {
+      throw new \DomainException("Já existe um ID para esse Endereço");
+    }
+
+    $this->id = $id;
   }
 }

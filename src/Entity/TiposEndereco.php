@@ -1,6 +1,6 @@
 <?php
 
-namespace Receiv\Controller;
+namespace Receiv\Entity;
 
 use Receiv\Abstracts\EntidadeFraca;
 
