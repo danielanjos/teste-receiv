@@ -3,6 +3,7 @@
 namespace Receiv\Controller;
 
 use Receiv\Helper\RenderizaHtml;
+use Receiv\Infra\Persistencia\CriaConexao;
 
 class Home implements InterfaceControlaRotas
 {
