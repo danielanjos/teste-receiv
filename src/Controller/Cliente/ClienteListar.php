@@ -6,7 +6,6 @@ use Receiv\Controller\InterfaceControlaRotas;
 use Receiv\Helper\RenderizaHtmlTrait;
 use Receiv\Infra\Persistence\CriaConexao;
 use Receiv\Infra\Repository\PDOClienteRepository;
-use Receiv\Infra\Repository\PDOColaboradoresRepository;
 
 class ClienteListar implements InterfaceControlaRotas
 {

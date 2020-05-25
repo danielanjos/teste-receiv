@@ -1,13 +1,13 @@
 <?php
 
-namespace Receiv\Controller\Cliente;
+namespace Receiv\Controller\Colaboradores;
 
 use Exception;
 use Receiv\Controller\InterfaceControlaRotas;
 use Receiv\Infra\Persistence\CriaConexao;
-use Receiv\Infra\Repository\PDOClienteRepository;
+use Receiv\Infra\Repository\PDOColaboradoresRepository;
 
-class ClienteRemover implements InterfaceControlaRotas
+class ColaboradorRemover implements InterfaceControlaRotas
 {
   public function ProcessaRequisicao(): void
   {
@@ -16,21 +16,21 @@ class ClienteRemover implements InterfaceControlaRotas
     try {
 
       $conexao = CriaConexao::criaConexao();
-      $pdoClienteRepository = new PDOClienteRepository($conexao);
+      $pdoColaboradoresRepository = new PDOColaboradoresRepository($conexao);
       
-      if(!$pdoClienteRepository->Remover($id)){
+      if(!$pdoColaboradoresRepository->Remover($id)){
         throw new Exception("Não foi possível remover");
       }
 
       $_SESSION["tipo_mensagem"] = "success";
       $_SESSION["mensagem"] = "Concluído";
-      header("Location: /clientes/listar");
+      header("Location: /colaboradores/listar");
     } catch (Exception $e) {
       $_SESSION["tipo_mensagem"] = "danger";
       $_SESSION["mensagem"] = $e->getMessage();
       echo $e->getMessage();
       // print_r($e);
-      header("Location: /clientes/listar");
+      header("Location: /colaboradores/listar");
     }
   }
 }

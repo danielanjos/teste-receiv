@@ -7,7 +7,6 @@ use Receiv\Entity\Cliente;
 use Receiv\Helper\RenderizaHtmlTrait;
 use Receiv\Infra\Persistence\CriaConexao;
 use Receiv\Infra\Repository\PDOClienteRepository;
-use Receiv\Infra\Repository\PDOEnderecosRepository;
 use Receiv\Infra\Repository\PDOTiposEndereco;
 use Receiv\Infra\Repository\PDOTiposPessoa;
 

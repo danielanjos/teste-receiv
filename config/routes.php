@@ -8,9 +8,11 @@ use Receiv\Controller\Cliente\ClienteRemover;
 use Receiv\Controller\Cliente\ClienteSalvar;
 use Receiv\Controller\Colaboradores\ColaboradorFormularioCadastro;
 use Receiv\Controller\Colaboradores\ColaboradorListar;
+use Receiv\Controller\Colaboradores\ColaboradorRemover;
 use Receiv\Controller\Colaboradores\ColaboradorSalvar;
 use Receiv\Controller\Titulos\TituloFormularioCadastro;
 use Receiv\Controller\Titulos\TituloListar;
+use Receiv\Controller\Titulos\TituloRemover;
 use Receiv\Controller\Titulos\TituloSalvar;
 
 return [
@@ -20,6 +22,7 @@ return [
   "/colaboradores/cadastro" => ColaboradorFormularioCadastro::class,
   "/colaboradores/salvar-colaborador" => ColaboradorSalvar::class,
   "/colaboradores/listar" => ColaboradorListar::class,
+  "/colaboradores/remover" => ColaboradorRemover::class,
   "/dashboard" => Dashboard::class,
   "/clientes/cadastro" => ClienteFormularioCadastro::class,
   "/clientes/salvar-cliente" => ClienteSalvar::class,
@@ -27,5 +30,6 @@ return [
   "/clientes/remover" => ClienteRemover::class,
   "/titulos/cadastro" => TituloFormularioCadastro::class,
   "/titulos/salvar-titulo" => TituloSalvar::class,
-  "/titulos/listar" => TituloListar::class
+  "/titulos/listar" => TituloListar::class,
+  "/titulos/remover" => TituloRemover::class
 ];
