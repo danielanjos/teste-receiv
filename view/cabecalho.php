@@ -44,16 +44,6 @@
             <a class="dropdown-item" href="/titulos/listar">Titulos</a>
           </div>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Relatórios
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/relatorios">Relatório</a>
-            <a class="dropdown-item" href="/devedores">Devedores</a>
-            <a class="dropdown-item" href="#"></a>
-          </div>
-        </li>
       </ul>
       <ul class="my-2 my-lg-0 list-inline">
         <li>
