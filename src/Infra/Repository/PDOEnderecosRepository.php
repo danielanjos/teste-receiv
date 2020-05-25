@@ -90,6 +90,9 @@ class PDOEnderecosRepository implements CRUDRepository, CRUDEnderecos
     $sqlInsert = "INSERT INTO enderecos (id_tipo_endereco, cep, descricao, bairro, cidade, estado, numero, id_cliente, fl_principal)
               VALUES (:id_tipo_endereco, :cep, :descricao, :bairro, :cidade, :estado, :numero, :id_cliente, :fl_principal)";
     $statement = $this->conexao->prepare($sqlInsert);
+
+    $statement->bindValue(":id_tipo_endereco", $endereco->tiposEnderecos->getId());
+    $statement->bindValue(":cep", $endereco->getCep());
     $statement->bindValue(":descricao", $endereco->getDescricao());
     $statement->bindValue(":bairro", $endereco->getBairro());
     $statement->bindValue(":cidade", $endereco->getCidade());

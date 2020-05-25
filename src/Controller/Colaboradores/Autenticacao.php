@@ -1,10 +1,11 @@
 <?php
 
-namespace Receiv\Controller;
+namespace Receiv\Controller\Colaboradores;
 
+use Receiv\Controller\InterfaceControlaRotas;
 use Receiv\Helper\FlashMessageTrait;
 use Receiv\Infra\Persistence\CriaConexao;
-use Receiv\Infra\Repository\PDOAutenticacaoRepository;
+use Receiv\Infra\Repository\PDOColaboradoresRepository;
 
 class Autenticacao implements InterfaceControlaRotas
 {
@@ -19,12 +20,13 @@ class Autenticacao implements InterfaceControlaRotas
 
     try{
       $conexao = CriaConexao::criaConexao();
-      $autenticacao = new PDOAutenticacaoRepository($conexao);
+      $autenticacao = new PDOColaboradoresRepository($conexao);
       $colaborador = $autenticacao->Autentica($login, $senha);
       $_SESSION["usuario_logado"] = $colaborador;
       header("Location: /dashboard");
     } catch (\Exception $e){
       $this->defineMensagem("danger", $e->getMessage());
+      echo $_SESSION["mensagem"];
       header("Location: /home");
     }
   }

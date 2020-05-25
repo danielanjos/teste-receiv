@@ -3,6 +3,7 @@
 namespace Receiv\Infra\Repository;
 
 use DateTimeImmutable;
+use Exception;
 use Receiv\Entity\Cliente;
 use Receiv\Entity\Enderecos;
 use Receiv\Repository\CRUDCliente;
@@ -26,11 +27,11 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
                   c.nome,
                   c.dt_nascimento,
                   t.id as idTiposPessoa,
-                  t.descricao as dsTipoPessoa,
+                  t.descricao as dsTipoPessoa
                 FROM clientes c
                 JOIN tipos_pessoa t ON t.id = c.id_tipo_pessoa";
 
-    $statement = $this->conexao->query($sqlQuery);
+    $statement = $this->conexao->prepare($sqlQuery);
     return $this->hidratarListaClientes($statement);
   }
 
@@ -43,13 +44,34 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
                   c.nome,
                   c.dt_nascimento,
                   t.id as idTiposPessoa,
-                  t.descricao as dsTipoPessoa,
+                  t.descricao as dsTipoPessoa
                 FROM clientes c
                 JOIN tipos_pessoa t ON t.id = c.id_tipo_pessoa
                 WHERE id = ?";
 
-    $statement = $this->conexao->query($sqlQuery);
+    $statement = $this->conexao->prepare($sqlQuery);
     $statement->bindValue(1, $id);
+    $statement->execute();
+
+    return $this->hidratarListaClientes($statement); 
+  }
+
+  public function BuscaPorCPF_CNPJ($cpf_cnpj): array
+  {
+    $sqlQuery = "SELECT 
+                  c.id,
+                  c.id_tipo_pessoa,
+                  c.cpf_cnpj,
+                  c.nome,
+                  c.dt_nascimento,
+                  t.id as idTiposPessoa,
+                  t.descricao as dsTipoPessoa
+                FROM clientes c
+                JOIN tipos_pessoa t ON t.id = c.id_tipo_pessoa
+                WHERE cpf_cnpj = ?";
+
+    $statement = $this->conexao->prepare($sqlQuery);
+    $statement->bindValue(1, $cpf_cnpj);
     $statement->execute();
 
     return $this->hidratarListaClientes($statement); 
@@ -86,7 +108,7 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
     $statement = $this->conexao->prepare($sqlInsert);
 
     $success = $statement->execute([
-      ":id" => $cliente->tiposPessoa->getId(),
+      ":id_tipo_pessoa" => $cliente->tiposPessoa->getId(),
       ":cpf_cnpj" => $cliente->getCpf_cnpj(),
       ":nome" => $cliente->getNome(),
       ":dt_nascimento" => $cliente->getDtNascimento()->format("Y-m-d")
@@ -114,6 +136,10 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
 
   public function Remover($id): bool
   {
+
+    $pdoEnderecosRepository = new PDOEnderecosRepository($this->conexao);
+    $pdoEnderecosRepository->RemoverTodosPorCliente($id);
+
     $sqlDelete = "DELETE FROM cliente WHERE id = :id";
     $statement = $this->conexao->prepare($sqlDelete);
     $statement->bindValue(":id", $id, \PDO::PARAM_INT);
@@ -146,7 +172,7 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
                   JOIN enderecos e ON e.id_cliente = c.id
                   JOIN tipos_endereco te ON te.id = e.id_tipo_endereco";
     
-    $statement = $this->conexao->query($sqlQuery);
+    $statement = $this->conexao->prepare($sqlQuery);
     $result = $statement->fetchAll();
 
     $clienteList = [];

@@ -7,7 +7,7 @@ use Receiv\Entity\Moeda;
 use Receiv\Entity\StatusTitulo;
 use Receiv\Entity\TiposTitulo;
 
-class Titulos
+class Titulo
 {
   private ?int $id;
   public TiposTitulo $tiposTitulo;
@@ -118,8 +118,18 @@ class Titulos
   /**
    * Get the value of ultimaAtualizacao
    */ 
-  public function getUltimaAtualizacao()
+  public function dtUltimaAtualizacao()
   {
-    return $this->ultimaAtualizacao;
+    return $this->dtUltimaAtualizacao;
   }
+
+  public function setId(int $id): void
+  {
+    if (!is_null($this->id)) {
+      throw new \DomainException("Já existe um ID para esse Endereço");
+    }
+
+    $this->id = $id;
+  }
+
 }

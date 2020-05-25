@@ -69,4 +69,13 @@ class Colaborador
     return $this->flAdministrador;
   }
 
+  public function setId(int $id): void
+  {
+    if (!is_null($this->id)) {
+      throw new \DomainException("Já existe um ID para esse Endereço");
+    }
+
+    $this->id = $id;
+  }
+
 }

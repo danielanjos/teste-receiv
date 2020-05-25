@@ -1,0 +1,7 @@
+input[type="date"]::-webkit-clear-button {
+  display: none;
+}
+
+input[type="checkbox"]{
+  width: auto;
+}

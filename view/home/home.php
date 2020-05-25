@@ -26,7 +26,7 @@
         unset($_SESSION['tipo_mensagem']);
       endif;
       ?>
-      <form action="/autenticacao" method="POST">
+      <form action="/colaboradores/autenticacao" method="POST">
         <div class="form-group">
           <label for="login">Login</label>
           <input type="text" name="login" id="login" class="form-control" autocomplete="off">

@@ -2,6 +2,7 @@
 
 function autoloader ($class){
   $namespace = "Receiv" . DIRECTORY_SEPARATOR;
+  $class = str_replace("\\", DIRECTORY_SEPARATOR, $class);
   $class = __DIR__ . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . str_replace($namespace, "", $class) . ".php";
 
   if(!file_exists($class)){

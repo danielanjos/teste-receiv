@@ -84,7 +84,7 @@ CREATE TABLE titulos(
     dt_quitacao DATETIME,
     valor_pago DOUBLE(10,2) DEFAULT 0,
     saldo_devedor DOUBLE(10,2) NOT NULL,
-    ultimaAtualizacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ultima_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP,
     id_moeda INT NOT NULL,
     CONSTRAINT fk_titulo_tipo FOREIGN KEY (id_tipo_titulo) REFERENCES tipos_titulo(id),
     CONSTRAINT fk_titulo_cliente FOREIGN KEY (id_cliente) REFERENCES clientes(id),
