@@ -36,7 +36,6 @@ class TituloSalvar implements InterfaceControlaRotas
       if(count($clienteList) == 0){
         throw new Exception("Cliente não encontrado");
       }
-      
 
       $titulo = new Titulo(
         null, 

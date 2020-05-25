@@ -20,8 +20,8 @@ class Cliente
     string $descricaoTipoPessoa,
     string $cpf_cnpj,
     string $nome,
-    DateTimeImmutable $dtNascimento
-  ) {
+    DateTimeImmutable $dtNascimento) 
+  {
     $this->id = $id;
     $this->tiposPessoa = new TiposPessoa($idTipoPessoa, $descricaoTipoPessoa);
     $this->cpf_cnpj = $cpf_cnpj;

@@ -31,7 +31,7 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
                 FROM clientes c
                 JOIN tipos_pessoa t ON t.id = c.id_tipo_pessoa";
 
-    $statement = $this->conexao->prepare($sqlQuery);
+    $statement = $this->conexao->query($sqlQuery);
     return $this->hidratarListaClientes($statement);
   }
 

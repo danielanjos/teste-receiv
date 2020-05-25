@@ -15,7 +15,7 @@ class Titulo
   private float $valor;
   private DateTimeImmutable $dtCriacao;
   private DateTimeImmutable $dtVencimento;
-  private int $idCliente;
+  public Cliente $cliente;
   public StatusTitulo $statusTitulo;
   private DateTimeImmutable $dtQuitacao;
   private float $valorPago;
@@ -26,7 +26,7 @@ class Titulo
   public function __construct(?int $id, int $idTipoTitulo, string $descricaoTipoTitulo, string $descricaoTitulo, 
     float $valor, DateTimeImmutable $dtCriacao, DateTimeImmutable $dtVencimento, int $idCliente, int $idStatusTitulo, 
     string $descricaoStatusTitulo, DateTimeImmutable $dtQuitacao, float $valorPago, float $saldoDevedor, 
-    DateTimeImmutable $dtUltimaAtualizacao, int $idMoeda, string $descricaoMoeda)
+    DateTimeImmutable $dtUltimaAtualizacao, int $idMoeda, string $descricaoMoeda, string $nomeCliente)
   {
     $this->id = $id;
     $this->tiposTitulo = new TiposTitulo($idTipoTitulo, $descricaoTipoTitulo);
@@ -34,7 +34,7 @@ class Titulo
     $this->valor = $valor;
     $this->dtCriacao = $dtCriacao;
     $this->dtVencimento = $dtVencimento;
-    $this->idCliente = $idCliente;
+    $this->cliente = new Cliente($idCliente, 0, '', '', $nomeCliente, new \DateTimeImmutable("now"));
     $this->statusTitulo = new StatusTitulo($idStatusTitulo, $descricaoStatusTitulo);
     $this->dtQuitacao = $dtQuitacao;
     $this->valorPago = $valorPago;

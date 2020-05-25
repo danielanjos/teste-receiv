@@ -109,4 +109,9 @@ class Enderecos
 
     $this->id = $id;
   }
+
+  public function getEnderecoFormatado(){
+
+    return $this->descricao . "," . $this->numero;
+  }
 }

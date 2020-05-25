@@ -19,15 +19,15 @@ class PDOColaboradoresRepository implements CRUDRepository, CRUDColaboradores
 
   public function Todos(): array
   {
-    $sqlQuery = "SELECT nome, login, email, senha, flAdministrador FROM colaboradores";
+    $sqlQuery = "SELECT id, nome, login, email, senha, fl_administrador FROM colaboradores";
 
-    $statement = $this->conexao->prepare($sqlQuery);
+    $statement = $this->conexao->query($sqlQuery);
     return $this->hidratarListaColaboradores($statement);
   }
 
   public function BuscaPorId($id): array
   {
-    $sqlQuery = "SELECT nome, login, email, senha, flAdministrador FROM colaboradores WHERE id = ?";
+    $sqlQuery = "SELECT id, nome, login, email, senha, fl_administrador FROM colaboradores WHERE id = ?";
 
     $statement = $this->conexao->prepare($sqlQuery);
     $statement->bindValue(1, $id);
@@ -43,7 +43,7 @@ class PDOColaboradoresRepository implements CRUDRepository, CRUDColaboradores
 
     foreach ($colaboradorDataList as $row) {
       $colaboradorList[] = new Colaborador(
-        $row["id"], $row["nome"], $row["login"], $row["email"], $row["senha"], $row["flAdministrador"]);
+        $row["id"], $row["nome"], $row["login"], $row["email"], $row["senha"], $row["fl_administrador"]);
     }
 
     return $colaboradorList;

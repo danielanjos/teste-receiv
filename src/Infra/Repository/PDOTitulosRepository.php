@@ -22,9 +22,11 @@ class PDOTitulosRepository implements CRUDRepository, CRUDTitulos
                   t.id_tipo_titulo,
                   tt.descricao as descricao_tipo_titulo,
                   t.descricao as descricao_titulo,
+                  t.valor,
                   t.dt_criacao,
                   t.dt_vencimento,
-                  t.id_Titulo,
+                  t.id_cliente,
+                  c.nome as nome_cliente,
                   t.id_status,
                   st.descricao as descricao_status_titulo,
                   t.dt_quitacao,
@@ -35,7 +37,7 @@ class PDOTitulosRepository implements CRUDRepository, CRUDTitulos
                   m.codigo as codigo_moeda
                 FROM titulos t
                 JOIN tipos_titulo tt ON tt.id = t.id_tipo_titulo
-                JOIN Titulos c ON c.id = t.id_Titulo
+                JOIN clientes c ON c.id = t.id_cliente
                 JOIN status_titulo st ON st.id = t.id_status
                 JOIN moeda m ON m.id = t.id_moeda";
 
@@ -50,9 +52,11 @@ class PDOTitulosRepository implements CRUDRepository, CRUDTitulos
                     t.id_tipo_titulo,
                     tt.descricao as descricao_tipo_titulo,
                     t.descricao as descricao_titulo,
+                    t.valor,
                     t.dt_criacao,
                     t.dt_vencimento,
-                    t.id_Titulo,
+                    t.id_cliente,
+                    c.nome as nome_cliente,
                     t.id_status,
                     st.descricao as descricao_status_titulo,
                     t.dt_quitacao,
@@ -63,7 +67,7 @@ class PDOTitulosRepository implements CRUDRepository, CRUDTitulos
                     m.codigo as codigo_moeda
                   FROM titulos t
                   JOIN tipos_titulo tt ON tt.id = t.id_tipo_titulo
-                  JOIN Titulos c ON c.id = t.id_Titulo
+                  JOIN clientes c ON c.id = t.id_cliente
                   JOIN status_titulo st ON st.id = t.id_status
                   JOIN moeda m ON m.id = t.id_moeda
                   WHERE id = ?";
@@ -83,8 +87,8 @@ class PDOTitulosRepository implements CRUDRepository, CRUDTitulos
     foreach ($tituloDataList as $row) {
       $tituloList[] = new Titulo(
         $row["id"], $row["id_tipo_titulo"], $row["descricao_tipo_titulo"], $row["descricao_titulo"], $row["valor"], new \DateTimeImmutable($row["dt_criacao"]),
-        new \DateTimeImmutable($row["dt_vencimento"]), $row["id_Titulo"], $row["id_status"], $row["descricao_status_titulo"], new \DateTimeImmutable($row["dt_quitacao"]),
-        $row["valor_pago"], $row["saldo_devedor"], new \DateTimeImmutable($row["ultima_atualizacao"]), $row["id_moeda"], $row["codigo_moeda"]
+        new \DateTimeImmutable($row["dt_vencimento"]), $row["id_cliente"], $row["id_status"], $row["descricao_status_titulo"], new \DateTimeImmutable($row["dt_quitacao"]),
+        $row["valor_pago"], $row["saldo_devedor"], new \DateTimeImmutable($row["ultima_atualizacao"]), $row["id_moeda"], $row["codigo_moeda"], $row["nome_cliente"]
       );
     }
 
