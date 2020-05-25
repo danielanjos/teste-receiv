@@ -4,6 +4,7 @@ use Receiv\Controller\Colaboradores\Autenticacao;
 use Receiv\Controller\{Home, Dashboard};
 use Receiv\Controller\Cliente\ClienteFormularioCadastro;
 use Receiv\Controller\Cliente\ClienteListar;
+use Receiv\Controller\Cliente\ClienteRemover;
 use Receiv\Controller\Cliente\ClienteSalvar;
 use Receiv\Controller\Colaboradores\ColaboradorFormularioCadastro;
 use Receiv\Controller\Colaboradores\ColaboradorListar;
@@ -23,6 +24,7 @@ return [
   "/clientes/cadastro" => ClienteFormularioCadastro::class,
   "/clientes/salvar-cliente" => ClienteSalvar::class,
   "/clientes/listar" => ClienteListar::class,
+  "/clientes/remover" => ClienteRemover::class,
   "/titulos/cadastro" => TituloFormularioCadastro::class,
   "/titulos/salvar-titulo" => TituloSalvar::class,
   "/titulos/listar" => TituloListar::class

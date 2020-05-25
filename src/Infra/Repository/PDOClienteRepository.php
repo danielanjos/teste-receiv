@@ -29,7 +29,8 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
                   t.id as idTiposPessoa,
                   t.descricao as dsTipoPessoa
                 FROM clientes c
-                JOIN tipos_pessoa t ON t.id = c.id_tipo_pessoa";
+                JOIN tipos_pessoa t ON t.id = c.id_tipo_pessoa 
+                ORDER BY c.id DESC";
 
     $statement = $this->conexao->query($sqlQuery);
     return $this->hidratarListaClientes($statement);
@@ -47,7 +48,7 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
                   t.descricao as dsTipoPessoa
                 FROM clientes c
                 JOIN tipos_pessoa t ON t.id = c.id_tipo_pessoa
-                WHERE id = ?";
+                WHERE c.id = ?";
 
     $statement = $this->conexao->prepare($sqlQuery);
     $statement->bindValue(1, $id);
@@ -94,7 +95,8 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
 
   public function Salvar(Cliente $cliente): bool
   {
-    if($cliente->getId() === null){
+    
+    if($cliente->getId() === null || $cliente->getId() == 0){
       return $this->insert($cliente);
     }
 
@@ -103,9 +105,13 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
 
   private function insert(Cliente $cliente): bool
   {
+    
     $sqlInsert = "INSERT INTO clientes (id_tipo_pessoa, cpf_cnpj, nome, dt_nascimento)
               VALUES (:id_tipo_pessoa, :cpf_cnpj, :nome, :dt_nascimento)";
+              
     $statement = $this->conexao->prepare($sqlInsert);
+
+    
 
     $success = $statement->execute([
       ":id_tipo_pessoa" => $cliente->tiposPessoa->getId(),
@@ -128,7 +134,7 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
     $statement->bindValue(":id_tipo_pessoa", $cliente->tiposPessoa->getId());
     $statement->bindValue(":cpf_cnpj", $cliente->getCpf_cnpj());
     $statement->bindValue(":nome", $cliente->getNome());
-    $statement->bindValue(":dt_nascimento", $cliente->getDtNascimento());
+    $statement->bindValue(":dt_nascimento", $cliente->getDtNascimento()->format("Y-m-d"));
     $statement->bindValue(":id", $cliente->getId());
 
     return $statement->execute();
@@ -140,14 +146,14 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
     $pdoEnderecosRepository = new PDOEnderecosRepository($this->conexao);
     $pdoEnderecosRepository->RemoverTodosPorCliente($id);
 
-    $sqlDelete = "DELETE FROM cliente WHERE id = :id";
+    $sqlDelete = "DELETE FROM clientes WHERE id = :id";
     $statement = $this->conexao->prepare($sqlDelete);
     $statement->bindValue(":id", $id, \PDO::PARAM_INT);
 
     return $statement->execute();
   }
 
-  public function TodosComEnderecos(): array
+  public function BuscaPorIdComEndereco($id): array
   {
     $sqlQuery = "SELECT 
                     c.id,
@@ -170,11 +176,14 @@ class PDOClienteRepository implements CRUDRepository, CRUDCliente
                   FROM clientes c
                   JOIN tipos_pessoa t ON t.id = c.id_tipo_pessoa
                   JOIN enderecos e ON e.id_cliente = c.id
-                  JOIN tipos_endereco te ON te.id = e.id_tipo_endereco";
+                  JOIN tipos_endereco te ON te.id = e.id_tipo_endereco
+                  WHERE c.id = ?";
     
     $statement = $this->conexao->prepare($sqlQuery);
-    $result = $statement->fetchAll();
+    $statement->bindValue(1, $id);
+    $statement->execute();
 
+    $result = $statement->fetchAll();
     $clienteList = [];
 
     foreach($result as $row){

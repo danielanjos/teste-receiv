@@ -7,20 +7,20 @@ use DateTimeImmutable;
 class Cliente
 {
   private ?int $id;
-  public TiposPessoa $tiposPessoa;
-  private string $cpf_cnpj;
-  private string $nome;
-  private DateTimeImmutable $dtNascimento;
+  public ?TiposPessoa $tiposPessoa;
+  private ?string $cpf_cnpj;
+  private ?string $nome;
+  private ?DateTimeImmutable $dtNascimento;
   /** @var Enderecos[] */
   private array $enderecos = [];
 
   public function __construct(
     ?int $id,
-    int $idTipoPessoa,
-    string $descricaoTipoPessoa,
-    string $cpf_cnpj,
-    string $nome,
-    DateTimeImmutable $dtNascimento) 
+    ?int $idTipoPessoa,
+    ?string $descricaoTipoPessoa,
+    ?string $cpf_cnpj,
+    ?string $nome,
+    ?DateTimeImmutable $dtNascimento) 
   {
     $this->id = $id;
     $this->tiposPessoa = new TiposPessoa($idTipoPessoa, $descricaoTipoPessoa);

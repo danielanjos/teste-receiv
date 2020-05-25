@@ -5,9 +5,9 @@ namespace Receiv\Abstracts;
 abstract class EntidadeFraca
 {
   private ?int $id;
-  private string $descricao;
+  private ?string $descricao;
 
-  public function __construct(int $id, string $descricao)
+  public function __construct(?int $id, ?string $descricao)
   {
     $this->id = $id;
     $this->descricao = $descricao;

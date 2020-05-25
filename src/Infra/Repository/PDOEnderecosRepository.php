@@ -112,7 +112,7 @@ class PDOEnderecosRepository implements CRUDRepository, CRUDEnderecos
   private function update(Enderecos $endereco) : bool
   {
     $sqlUpdate = "UPDATE enderecos SET id_tipo_endereco = :id_tipo_endereco, cep = :cep, descricao = :descricao, 
-                bairro = :bairro, cidade = :cidade, estado = :estado, numero = :numero, id_cliente = :idCliente, fl_principal = :fl_principal 
+                bairro = :bairro, cidade = :cidade, estado = :estado, numero = :numero, id_cliente = :id_cliente, fl_principal = :fl_principal 
                 WHERE id = :id";
 
     $statement = $this->conexao->prepare($sqlUpdate);
@@ -125,6 +125,7 @@ class PDOEnderecosRepository implements CRUDRepository, CRUDEnderecos
     $statement->bindValue(":numero", $endereco->getNumero());
     $statement->bindValue(":id_cliente", $endereco->getIdCliente());
     $statement->bindValue(":fl_principal", $endereco->getFlPrincipal());
+    $statement->bindValue(":id", $endereco->getId());
 
     return $statement->execute();
   }
@@ -140,7 +141,7 @@ class PDOEnderecosRepository implements CRUDRepository, CRUDEnderecos
 
   public function RemoverTodosPorCliente($idCliente): bool
   {
-    $sqlDelete = "DELETE FROM enderecos WHERE idCliente = :id";
+    $sqlDelete = "DELETE FROM enderecos WHERE id_cliente = :id";
     $statement = $this->conexao->prepare($sqlDelete);
     $statement->bindValue(":id", $idCliente, \PDO::PARAM_INT);
 

@@ -27,8 +27,8 @@
         <td>
           <?= $cliente->getDtNascimento()->format("d/m/Y") ?>
         </td>
-        <td class="text-center"><a class="text-primary" title="Editar" href="#"><i class="fas fa-edit"></i></a></td>
-        <td class="text-center"><a class="text-danger" title="Remover" href="#"><i class="far fa-trash-alt"></i></a></td>
+        <td class="text-center"><a class="text-primary" title="Editar" href="/clientes/cadastro?id=<?=$cliente->GetId()?>"><i class="fas fa-edit"></i></a></td>
+        <td class="text-center"><a class="text-danger" title="Remover" href="/clientes/remover?id=<?=$cliente->getId()?>"><i class="far fa-trash-alt"></i></a></td>
       </tr>
     <?php
     endforeach;
