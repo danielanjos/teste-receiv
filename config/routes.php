@@ -1,7 +1,7 @@
 <?php
 
 use Receiv\Controller\Colaboradores\Autenticacao;
-use Receiv\Controller\{Home, Dashboard};
+use Receiv\Controller\{Charts, Home, Dashboard};
 use Receiv\Controller\Cliente\ClienteFormularioCadastro;
 use Receiv\Controller\Cliente\ClienteListar;
 use Receiv\Controller\Cliente\ClienteRemover;
@@ -24,6 +24,7 @@ return [
   "/colaboradores/listar" => ColaboradorListar::class,
   "/colaboradores/remover" => ColaboradorRemover::class,
   "/dashboard" => Dashboard::class,
+  "/dashboard/charts" => Charts::class,
   "/clientes/cadastro" => ClienteFormularioCadastro::class,
   "/clientes/salvar-cliente" => ClienteSalvar::class,
   "/clientes/listar" => ClienteListar::class,

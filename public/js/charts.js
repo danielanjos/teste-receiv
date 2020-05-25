@@ -2,7 +2,7 @@ const primeiroChart = document.getElementById('primeiroChart');
 customPrimeiroChart = new Chart(primeiroChart, {
   type: 'bar',
   data: {
-    labels: ['Janeiro', 'Fecereiro', 'Março', 'Abril', 'Maio'],
+    labels: ['120-180', '90-120', '60-90', '30-60', '30 Dias'],
     datasets: [
       {
         label: '# de tarefas',
@@ -45,7 +45,7 @@ const segundoChart = document.getElementById('segundoChart');
 customSegundoChart = new Chart(segundoChart, {
   type: 'line',
   data: {
-    labels: ['Janeiro', 'Fecereiro', 'Março', 'Abril', 'Maio'],
+    labels: ['120-180', '90-120', '60-90', '30-60', '30 Dias'],
     datasets: [
       {
         label: '# de tarefas',
@@ -94,7 +94,7 @@ const terceiroChart = document.getElementById('terceiroChart');
 customTerceiroChart = new Chart(terceiroChart, {
   type: 'bar',
   data: {
-    labels: ['Janeiro', 'Fecereiro', 'Março', 'Abril', 'Maio'],
+    labels: ['120-180', '90-120', '60-90', '30-60', '30 Dias'],
     datasets: [
       {
         label: '# de tarefas',
@@ -138,7 +138,7 @@ const quartoChart = document.getElementById('quartoChart');
 customQuartoChart = new Chart(quartoChart, {
   type: 'line',
   data: {
-    labels: ['Janeiro', 'Fecereiro', 'Março', 'Abril', 'Maio'],
+    labels: ['120-180', '90-120', '60-90', '30-60', '30 Dias'],
     datasets: [
       {
         label: '# de tarefas',

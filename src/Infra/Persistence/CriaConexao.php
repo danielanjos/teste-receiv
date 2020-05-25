@@ -16,7 +16,7 @@ class CriaConexao
       new \PDO(
         "mysql:
         host=" . CONEXAO_HOST . ";"
-          . "dbname=" . CONEXAO_DATABASE,
+          . "dbname=" . CONEXAO_DATABASE . ";charset=utf8",
         CONEXAO_USER,
         CONEXAO_PASSWORD
       );
