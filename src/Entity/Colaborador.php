@@ -5,13 +5,13 @@ namespace Receiv\Entity;
 class Colaborador
 {
   private ?int $id;
-  private string $nome;
-  private string $login;
-  private string $email;
-  private string $senha;
-  private bool $flAdministrador;
+  private ?string $nome;
+  private ?string $login;
+  private ?string $email;
+  private ?string $senha;
+  private ?bool $flAdministrador;
   
-  public function __construct(?int $id, string $nome, string $login, string $email, string $senha, bool $flAdministrador)
+  public function __construct(?int $id, ?string $nome, ?string $login, ?string $email, ?string $senha, ?bool $flAdministrador)
   {
     $this->id = $id;
     $this->nome = $nome;

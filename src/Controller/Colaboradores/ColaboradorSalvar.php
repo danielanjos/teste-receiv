@@ -12,16 +12,20 @@ class ColaboradorSalvar implements InterfaceControlaRotas
 {
   public function ProcessaRequisicao(): void
   {
+    $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+    if($id == 0) $id = null;
+
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
     $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
     $flAdministrador = isset($_POST["fl_administrador"]) ? true : false;
+    $hashAtual =@ $_POST["hashAtual"];
 
-    $hash = password_hash($senha, PASSWORD_ARGON2I);
+    $hash = ($senha != "") ? password_hash($senha, PASSWORD_ARGON2I) : $hashAtual;
 
     try {
-      $colaborador = new Colaborador(null, $nome, $login, $email, $hash, $flAdministrador);
+      $colaborador = new Colaborador($id, $nome, $login, $email, $hash, $flAdministrador);
 
       $conexao = CriaConexao::criaConexao();
       $pdoColaboradoresRepository = new PDOColaboradoresRepository($conexao);

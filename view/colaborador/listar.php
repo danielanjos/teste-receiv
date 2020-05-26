@@ -23,7 +23,7 @@
                 <td>
                     <?= $colaborador->getEmail() ?>
                 </td>
-                <td class="text-center"><a class="text-primary" title="Editar" href="#"><i class="fas fa-edit"></i></a></td>
+                <td class="text-center"><a class="text-primary" title="Editar" href="/colaboradores/cadastro?id=<?=$colaborador->getId()?>"><i class="fas fa-edit"></i></a></td>
                 <td class="text-center"><a class="text-danger" title="Remover" href="/colaboradores/remover?id=<?=$colaborador->getId()?>"><i class="far fa-trash-alt"></i></a></td>
             </tr>
         <?php
