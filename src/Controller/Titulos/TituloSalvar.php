@@ -53,6 +53,7 @@ class TituloSalvar implements InterfaceControlaRotas
         $saldoDevedor, 
         new \DateTimeImmutable("now"), 
         $idMoeda, 
+        "",
         ""
       );
 

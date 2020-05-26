@@ -115,7 +115,7 @@ class PDOTitulosRepository implements CRUDRepository, CRUDTitulos
     $statement->bindValue(":valor", $titulo->getValor());
     $statement->bindValue(":dt_criacao", $titulo->getDtCriacao()->format("Y-m-d"));
     $statement->bindValue(":dt_vencimento", $titulo->getDtVencimento()->format("Y-m-d"));
-    $statement->bindValue(":id_cliente", $titulo->getIdCliente());
+    $statement->bindValue(":id_cliente", $titulo->cliente->getId());
     $statement->bindValue(":id_status", $titulo->statusTitulo->getId());
     $statement->bindValue(":dt_quitacao", $titulo->getDtQuitacao()->format("Y-m-d"));
     $statement->bindValue(":valor_pago", $titulo->getValorPago());
@@ -144,7 +144,7 @@ class PDOTitulosRepository implements CRUDRepository, CRUDTitulos
     $statement->bindValue(":valor", $titulo->getValor());
     $statement->bindValue(":dt_criacao", $titulo->getDtCriacao());
     $statement->bindValue(":dt_vencimento", $titulo->getDtVencimento());
-    $statement->bindValue(":id_cliente", $titulo->getIdCliente());
+    $statement->bindValue(":id_cliente", $titulo->cliente->getId());
     $statement->bindValue(":id_status", $titulo->statusTitulo->getId());
     $statement->bindValue(":dt_quitacao", $titulo->getDtQuitacao());
     $statement->bindValue(":valor_pago", $titulo->getValorPago());
