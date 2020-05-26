@@ -5,7 +5,7 @@ customPrimeiroChart = new Chart(primeiroChart, {
     labels: ['120-180', '90-120', '60-90', '30-60', '30 Dias'],
     datasets: [
       {
-        label: '# de tarefas',
+        label: 'Valor em R$',
         data: [30, 55, 87, 60, 27],
         backgroundColor: [
           'rgba(54, 162, 235, 0.2)',
@@ -48,7 +48,7 @@ customSegundoChart = new Chart(segundoChart, {
     labels: ['120-180', '90-120', '60-90', '30-60', '30 Dias'],
     datasets: [
       {
-        label: '# de tarefas',
+        label: 'Vigentes',
         data: [30, 55, 87, 60, 27],
         backgroundColor: [
           'rgba(54, 162, 235, 0.0)',
@@ -59,7 +59,7 @@ customSegundoChart = new Chart(segundoChart, {
         borderWidth: 1
       },
       {
-        label: '# de tarefas',
+        label: 'Quitados',
         data: [80, 70, 12, 60, 27],
         backgroundColor: [
           'rgba(255, 99, 132, 0.0)',
@@ -97,7 +97,7 @@ customTerceiroChart = new Chart(terceiroChart, {
     labels: ['120-180', '90-120', '60-90', '30-60', '30 Dias'],
     datasets: [
       {
-        label: '# de tarefas',
+        label: 'Valor em R$',
         data: [30, 55, 87, 60, 27],
         backgroundColor: [
           'rgba(54, 162, 235, 0.2)',
@@ -141,7 +141,7 @@ customQuartoChart = new Chart(quartoChart, {
     labels: ['120-180', '90-120', '60-90', '30-60', '30 Dias'],
     datasets: [
       {
-        label: '# de tarefas',
+        label: 'Vigentes',
         data: [30, 55, 87, 60, 27],
         backgroundColor: [
           'rgba(54, 162, 235, 0.0)',
@@ -152,7 +152,7 @@ customQuartoChart = new Chart(quartoChart, {
         borderWidth: 1
       },
       {
-        label: '# de tarefas',
+        label: 'Quitados',
         data: [80, 70, 12, 60, 27],
         backgroundColor: [
           'rgba(255, 99, 132, 0.0)',

@@ -47,7 +47,7 @@
       </ul>
       <ul class="my-2 my-lg-0 list-inline">
         <li>
-          <button class="btn btn-outline-light my-2 my-sm-0"><i class="fas fa-power-off"></i></button>
+          <button class="btn btn-outline-light my-2 my-sm-0"><a class="text-white" href="/logout"><i class="fas fa-power-off"></i></a></button>
         </li>
       </ul>
     </div>

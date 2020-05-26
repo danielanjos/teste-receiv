@@ -10,6 +10,7 @@ use Receiv\Controller\Colaboradores\ColaboradorFormularioCadastro;
 use Receiv\Controller\Colaboradores\ColaboradorListar;
 use Receiv\Controller\Colaboradores\ColaboradorRemover;
 use Receiv\Controller\Colaboradores\ColaboradorSalvar;
+use Receiv\Controller\Colaboradores\Logout;
 use Receiv\Controller\Titulos\TituloFormularioCadastro;
 use Receiv\Controller\Titulos\TituloListar;
 use Receiv\Controller\Titulos\TituloRemover;
@@ -23,6 +24,7 @@ return [
   "/colaboradores/salvar-colaborador" => ColaboradorSalvar::class,
   "/colaboradores/listar" => ColaboradorListar::class,
   "/colaboradores/remover" => ColaboradorRemover::class,
+  "/logout" => Logout::class,
   "/dashboard" => Dashboard::class,
   "/dashboard/charts" => Charts::class,
   "/clientes/cadastro" => ClienteFormularioCadastro::class,
