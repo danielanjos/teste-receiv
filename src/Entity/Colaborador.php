@@ -9,9 +9,9 @@ class Colaborador
   private ?string $login;
   private ?string $email;
   private ?string $senha;
-  private ?bool $flAdministrador;
+  private ?int $flAdministrador;
   
-  public function __construct(?int $id, ?string $nome, ?string $login, ?string $email, ?string $senha, ?bool $flAdministrador)
+  public function __construct(?int $id, ?string $nome, ?string $login, ?string $email, ?string $senha, ?int $flAdministrador)
   {
     $this->id = $id;
     $this->nome = $nome;

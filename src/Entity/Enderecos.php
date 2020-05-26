@@ -13,9 +13,9 @@ class Enderecos
   private string $estado;
   private int $numero;
   private int $idCliente;
-  private bool $flPrincipal;
+  private int $flPrincipal;
   
-  public function __construct(?int $id, int $idTipoEndereco, string $cep, string $descricaoTipoEndereco, string $descricaoEndereco, string $bairro, string $cidade, string $estado, int $numero, int $idCliente, bool $flPrincipal)
+  public function __construct(?int $id, int $idTipoEndereco, string $cep, string $descricaoTipoEndereco, string $descricaoEndereco, string $bairro, string $cidade, string $estado, int $numero, int $idCliente, int $flPrincipal)
   {
     $this->id = $id;
     $this->tiposEnderecos = new TiposEndereco($idTipoEndereco, $descricaoTipoEndereco);

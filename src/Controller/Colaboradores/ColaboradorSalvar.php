@@ -19,7 +19,7 @@ class ColaboradorSalvar implements InterfaceControlaRotas
     $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
-    $flAdministrador = isset($_POST["fl_administrador"]) ? true : false;
+    $flAdministrador = isset($_POST["fl_administrador"]) ? 1 : 0;
     $hashAtual =@ $_POST["hashAtual"];
 
     $hash = ($senha != "") ? password_hash($senha, PASSWORD_ARGON2I) : $hashAtual;
@@ -36,11 +36,11 @@ class ColaboradorSalvar implements InterfaceControlaRotas
 
       $_SESSION["tipo_mensagem"] = "success";
       $_SESSION["mensagem"] = "Concluído";
-      header("Location: /colaboradores/cadastro");
+      header("Location: /colaboradores/cadastro?id=$id");
     } catch (Exception $e) {
       $_SESSION["tipo_mensagem"] = "danger";
       $_SESSION["mensagem"] = $e->getMessage();
-      header("Location: /colaboradores/cadastro");
+      header("Location: /colaboradores/cadastro?id=$id");
     }
   }
 }

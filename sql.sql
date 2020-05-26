@@ -7,7 +7,7 @@ CREATE TABLE colaboradores(
     login VARCHAR(30) NOT NULL,
     email VARCHAR(255) NOT NULL,
     senha VARCHAR(255) NOT NULL,
-    fl_administrador BIT  NOT NULL
+    fl_administrador TINYINT  NOT NULL
 );
 
 INSERT INTO colaboradores (nome, login, email, senha, fl_administrador) VALUES ('Administrador', 'admin', 'admin@email.com', '$argon2id$v=19$m=65536,t=4,p=1$RDJLMy9Ld2xaSmRGY2NZWA$BCWvz71kGfGI3E1d1XoFbhMD8udOeJfcjs3oo2OiJNI', 1);
@@ -45,7 +45,7 @@ CREATE TABLE enderecos(
     estado VARCHAR(2) NOT NULL,
     numero INT NOT NULL,
     id_cliente INT NOT NULL,
-    fl_principal BIT NOT NULL,
+    fl_principal TINYINT NOT NULL,
     CONSTRAINT fk_endereco_tipo FOREIGN KEY (id_tipo_endereco) REFERENCES tipos_endereco(id),
     CONSTRAINT fk_endereco_cliente FOREIGN KEY (id_cliente) REFERENCES clientes(id)
 );

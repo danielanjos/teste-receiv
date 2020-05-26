@@ -20,6 +20,8 @@ class ClienteSalvar implements InterfaceControlaRotas
 
     $idEndereco1 = filter_input(INPUT_POST, 'idEndereco1', FILTER_VALIDATE_INT);
     $idEndereco2 = filter_input(INPUT_POST, 'idEndereco2', FILTER_VALIDATE_INT);
+    if($idEndereco1 == 0) $idEndereco1 = null;
+    if($idEndereco2 == 0) $idEndereco2 = null;
 
     $idTipoPessoa = filter_input(INPUT_POST, 'tipo_pessoa', FILTER_VALIDATE_INT);
     $cpf_cnpj = filter_input(INPUT_POST, 'cpf_cnpj', FILTER_VALIDATE_INT);
@@ -58,8 +60,8 @@ class ClienteSalvar implements InterfaceControlaRotas
         throw new Exception("Não foi possível cadastrar o cliente");
       }
 
-      $endereco01 = new Enderecos($idEndereco1, $tipoEndereco[0], $cep[0], "", $descricao[0], $bairro[0], $cidade[0], $estado[0], $numero[0], $cliente->getId(), true);
-      $endereco02 = new Enderecos($idEndereco2, $tipoEndereco[1], $cep[1], "", $descricao[1], $bairro[1], $cidade[1], $estado[1], $numero[1], $cliente->getId(), false);
+      $endereco01 = new Enderecos($idEndereco1, $tipoEndereco[0], $cep[0], "", $descricao[0], $bairro[0], $cidade[0], $estado[0], $numero[0], $cliente->getId(), 1);
+      $endereco02 = new Enderecos($idEndereco2, $tipoEndereco[1], $cep[1], "", $descricao[1], $bairro[1], $cidade[1], $estado[1], $numero[1], $cliente->getId(), 0);
 
       $pdoEnderecosRepository = new PDOEnderecosRepository($conexao);
 
