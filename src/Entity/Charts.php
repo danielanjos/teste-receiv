@@ -4,14 +4,14 @@ namespace Receiv\Entity;
 
 class Charts implements \JsonSerializable
 {
-  private string $nome;
-  private float $dias30;
-  private float $dias60;
-  private float $dias90;
-  private float $dias120;
-  private float $dias180;
+  private $nome;
+  private $dias30;
+  private $dias60;
+  private $dias90;
+  private $dias120;
+  private $dias180;
 
-  public function __construct($nome, $dias30, $dias60, $dias90, $dias120, $dias180)
+  public function __construct($nome = null, $dias30 = null, $dias60 = null, $dias90 = null, $dias120 = null, $dias180 = null)
   {
     $this->nome = $nome;
     $this->dias30 = $dias30;

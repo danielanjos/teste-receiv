@@ -4,12 +4,19 @@ mb_internal_encoding('UTF8');
 mb_regex_encoding('UTF8');
 ini_set ("default_charset", 'utf-8');
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 
 require_once "../autoload.php";
-
-$caminho =@ $_SERVER["PATH_INFO"];
+$caminho =@ $_SERVER["SCRIPT_URL"];
 $rotas = require __DIR__ . "/../config/routes.php";
+
+// echo "<pre>";
+// var_dump($_SERVER);
+// echo "caminho = " . $caminho;
 
 if (!array_key_exists($caminho, $rotas)) {
   http_response_code(404);

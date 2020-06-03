@@ -10,9 +10,9 @@ use Receiv\Repository\CRUDRepository;
 class PDOColaboradoresRepository implements CRUDRepository, CRUDColaboradores
 {
 
-  private \PDO $conexao;
+  private $conexao;
 
-  public function __construct(\PDO $conexao)
+  public function __construct($conexao)
   {
     $this->conexao = $conexao;
   }

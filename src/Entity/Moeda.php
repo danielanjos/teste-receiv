@@ -4,10 +4,10 @@ namespace Receiv\Entity;
 
 class Moeda
 {
-  private ?int $id;
-  private string $codigo;
+  private $id;
+  private $codigo;
 
-  public function __construct(int $id, string $codigo)
+  public function __construct($id, $codigo)
   {
     $this->id = $id;
     $this->codigo = $codigo;

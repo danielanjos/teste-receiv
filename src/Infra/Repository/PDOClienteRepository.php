@@ -11,9 +11,9 @@ use Receiv\Repository\CRUDRepository;
 
 class PDOClienteRepository implements CRUDRepository, CRUDCliente
 {
-  private \PDO $conexao;
+  private $conexao;
 
-  public function __construct(\PDO $conexao)
+  public function __construct($conexao)
   {
     $this->conexao = $conexao;
   }

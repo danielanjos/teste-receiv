@@ -9,9 +9,9 @@ use Receiv\Repository\CRUDRepository;
 class PDOEnderecosRepository implements CRUDRepository, CRUDEnderecos
 {
 
-  private \PDO $conexao;
+  private $conexao;
 
-  public function __construct(\PDO $conexao)
+  public function __construct($conexao)
   {
     $this->conexao = $conexao;
   }

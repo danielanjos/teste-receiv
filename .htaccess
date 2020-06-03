@@ -1,0 +1,10 @@
+RewriteEngine On
+ 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /public/ [L]
+
+<IfModule mime_module>
+AddHandler application/x-httpd-ea-php73 .php .php7 .phtml
+</IfModule> 
+

@@ -8,9 +8,9 @@ use Receiv\Repository\CRUDTitulos;
 
 class PDOTitulosRepository implements CRUDRepository, CRUDTitulos
 {
-  private \PDO $conexao;
+  private $conexao;
 
-  public function __construct(\PDO $conexao)
+  public function __construct($conexao)
   {
     $this->conexao = $conexao;
   }

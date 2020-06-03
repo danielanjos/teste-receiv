@@ -7,10 +7,15 @@ class CriaConexao
   public static function criaConexao(): \PDO
   {
 
+    // define("CONEXAO_HOST", "localhost");
+    // define("CONEXAO_USER", "root");
+    // define("CONEXAO_DATABASE", "newDatabase");
+    // define("CONEXAO_PASSWORD", "");
+
     define("CONEXAO_HOST", "localhost");
-    define("CONEXAO_USER", "root");
-    define("CONEXAO_DATABASE", "newDatabase");
-    define("CONEXAO_PASSWORD", "");
+    define("CONEXAO_USER", "phpnao12_receiv");
+    define("CONEXAO_DATABASE", "phpnao12_receiv");
+    define("CONEXAO_PASSWORD", "gbtcb7VGz5FXNQH");
 
     $conexao =
       new \PDO(

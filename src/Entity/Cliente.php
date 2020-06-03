@@ -6,21 +6,21 @@ use DateTimeImmutable;
 
 class Cliente
 {
-  private ?int $id;
-  public ?TiposPessoa $tiposPessoa;
-  private ?string $cpf_cnpj;
-  private ?string $nome;
-  private ?DateTimeImmutable $dtNascimento;
+  private $id;
+  public $tiposPessoa;
+  private $cpf_cnpj;
+  private $nome;
+  private $dtNascimento;
   /** @var Enderecos[] */
-  private array $enderecos = [];
+  private $enderecos = [];
 
   public function __construct(
-    ?int $id,
-    ?int $idTipoPessoa,
-    ?string $descricaoTipoPessoa,
-    ?string $cpf_cnpj,
-    ?string $nome,
-    ?DateTimeImmutable $dtNascimento) 
+    $id = null,
+    $idTipoPessoa = null,
+    $descricaoTipoPessoa = null,
+    $cpf_cnpj = null,
+    $nome = null,
+    $dtNascimento = null) 
   {
     $this->id = $id;
     $this->tiposPessoa = new TiposPessoa($idTipoPessoa, $descricaoTipoPessoa);
@@ -37,7 +37,7 @@ class Cliente
     return $this->id;
   }
 
-  public function setId(int $id): void
+  public function setId($id): void
   {
     if (!is_null($this->id)) {
       throw new \DomainException("Já existe um ID para esse Cliente");

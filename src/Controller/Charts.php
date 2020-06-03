@@ -10,7 +10,6 @@ class Charts implements InterfaceControlaRotas
 
   public function ProcessaRequisicao(): void
   {
-
     $conexao = CriaConexao::criaConexao();
     $pdoDashboardRepository = new PDODashboardRepository($conexao);
     $primeiroChart = $pdoDashboardRepository->primeiroChart();

@@ -6,9 +6,9 @@ use Receiv\Entity\StatusTitulo;
 
 class PDOStatusTitulo
 {
-  private \PDO $conexao;
+  private $conexao;
 
-  public function __construct(\PDO $conexao)
+  public function __construct($conexao)
   {
     $this->conexao = $conexao;
   }

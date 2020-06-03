@@ -4,14 +4,14 @@ namespace Receiv\Entity;
 
 class Colaborador
 {
-  private ?int $id;
-  private ?string $nome;
-  private ?string $login;
-  private ?string $email;
-  private ?string $senha;
-  private ?int $flAdministrador;
+  private $id;
+  private $nome;
+  private $login;
+  private $email;
+  private $senha;
+  private $flAdministrador;
   
-  public function __construct(?int $id, ?string $nome, ?string $login, ?string $email, ?string $senha, ?int $flAdministrador)
+  public function __construct($id = null, $nome = null, $login = null, $email = null, $senha = null, $flAdministrador = null)
   {
     $this->id = $id;
     $this->nome = $nome;
@@ -69,7 +69,7 @@ class Colaborador
     return $this->flAdministrador;
   }
 
-  public function setId(int $id): void
+  public function setId($id): void
   {
     if (!is_null($this->id)) {
       throw new \DomainException("Já existe um ID para esse Endereço");

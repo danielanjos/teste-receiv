@@ -4,7 +4,7 @@ namespace Receiv\Helper;
 
 trait FlashMessageTrait
 {
-  public function defineMensagem(string $tipo, string $mensagem): void
+  public function defineMensagem($tipo, $mensagem): void
     {
         $_SESSION['mensagem'] = $mensagem;
         $_SESSION['tipo_mensagem'] = $tipo;

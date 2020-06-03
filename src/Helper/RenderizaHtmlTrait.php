@@ -4,7 +4,7 @@ namespace Receiv\Helper;
 
 trait RenderizaHtmlTrait
 {
-  public function renderizaHtml(string $caminhoTemplate, array $dados) : string
+  public function renderizaHtml($caminhoTemplate, array $dados) : string
   {
     extract($dados);
 

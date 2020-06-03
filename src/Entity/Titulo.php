@@ -9,24 +9,24 @@ use Receiv\Entity\TiposTitulo;
 
 class Titulo
 {
-  private ?int $id;
-  public TiposTitulo $tiposTitulo;
-  private string $descricao;
-  private float $valor;
-  private DateTimeImmutable $dtCriacao;
-  private DateTimeImmutable $dtVencimento;
-  public Cliente $cliente;
-  public StatusTitulo $statusTitulo;
-  private DateTimeImmutable $dtQuitacao;
-  private float $valorPago;
-  private float $saldoDevedor;
-  private DateTimeImmutable $dtUltimaAtualizacao;
-  public Moeda $moeda;
+  private $id;
+  public  $tiposTitulo;
+  private $descricao;
+  private $valor;
+  private $dtCriacao;
+  private $dtVencimento;
+  public  $cliente;
+  public  $statusTitulo;
+  private $dtQuitacao;
+  private $valorPago;
+  private $saldoDevedor;
+  private $dtUltimaAtualizacao;
+  public  $moeda;
   
-  public function __construct(?int $id, int $idTipoTitulo, string $descricaoTipoTitulo, string $descricaoTitulo, 
-    float $valor, DateTimeImmutable $dtCriacao, DateTimeImmutable $dtVencimento, int $idCliente, int $idStatusTitulo, 
-    string $descricaoStatusTitulo, DateTimeImmutable $dtQuitacao, float $valorPago, float $saldoDevedor, 
-    DateTimeImmutable $dtUltimaAtualizacao, int $idMoeda, string $descricaoMoeda, string $nomeCliente)
+  public function __construct($id = null, $idTipoTitulo = null, $descricaoTipoTitulo = null, $descricaoTitulo = null, 
+    $valor = null, $dtCriacao = null, $dtVencimento = null, $idCliente = null, $idStatusTitulo = null, 
+    $descricaoStatusTitulo = null, $dtQuitacao = null, $valorPago = null, $saldoDevedor = null, 
+    $dtUltimaAtualizacao = null, $idMoeda = null, $descricaoMoeda = null, $nomeCliente = null)
   {
     $this->id = $id;
     $this->tiposTitulo = new TiposTitulo($idTipoTitulo, $descricaoTipoTitulo);
@@ -123,7 +123,7 @@ class Titulo
     return $this->dtUltimaAtualizacao;
   }
 
-  public function setId(int $id): void
+  public function setId($id): void
   {
     if (!is_null($this->id)) {
       throw new \DomainException("Já existe um ID para esse Endereço");

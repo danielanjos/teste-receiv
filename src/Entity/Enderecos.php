@@ -4,18 +4,18 @@ namespace Receiv\Entity;
 
 class Enderecos
 {
-  private ?int $id;
-  public TiposEndereco $tiposEnderecos;
-  private string $cep;
-  private string $descricao;
-  private string $bairro;
-  private string $cidade;
-  private string $estado;
-  private int $numero;
-  private int $idCliente;
-  private int $flPrincipal;
+  private $id;
+  public  $tiposEnderecos;
+  private $cep;
+  private $descricao;
+  private $bairro;
+  private $cidade;
+  private $estado;
+  private $numero;
+  private $idCliente;
+  private $flPrincipal;
   
-  public function __construct(?int $id, int $idTipoEndereco, string $cep, string $descricaoTipoEndereco, string $descricaoEndereco, string $bairro, string $cidade, string $estado, int $numero, int $idCliente, int $flPrincipal)
+  public function __construct($id = null, $idTipoEndereco = null, $cep = null, $descricaoTipoEndereco = null, $descricaoEndereco = null, $bairro = null, $cidade = null, $estado = null, $numero = null, $idCliente = null, $flPrincipal = null)
   {
     $this->id = $id;
     $this->tiposEnderecos = new TiposEndereco($idTipoEndereco, $descricaoTipoEndereco);
@@ -101,7 +101,7 @@ class Enderecos
     return $this->flPrincipal;
   }
 
-  public function setId(int $id): void
+  public function setId($id): void
   {
     if (!is_null($this->id)) {
       throw new \DomainException("Já existe um ID para esse Endereço");
